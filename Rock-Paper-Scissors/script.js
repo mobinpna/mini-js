@@ -21,20 +21,30 @@ function getComputerChoice(){
 }
 
 function playRound(playerChoice, computerChoice) {
-    if (playerChoice == "rock" && computerChoice == "paper")
-        return "you lose"
-    if (playerChoice == "rock" && computerChoice == "scissors")
-        return "you win"
-    
-    if (playerChoice == "paper" && computerChoice == "scissors")
-        return "you lose"
-    if (playerChoice == "paper" && computerChoice == "rock")
-        return "you win"
-
-    if (playerChoice == "scissors" && computerChoice == "rock")
-        return "you lose"
-    if (playerChoice == "scissors" && computerChoice == "paper")
-        return "you win" 
+    if (playerChoice == "rock" && computerChoice == "paper"){
+        console.log("you lost this round")
+        return "you lost this round"
+    }
+    if (playerChoice == "rock" && computerChoice == "scissors"){
+        console.log("you won this round")
+        return "you won this round"
+    }
+    if (playerChoice == "paper" && computerChoice == "scissors"){
+        console.log("you lost this round")
+        return "you lost this round"
+    }
+    if (playerChoice == "paper" && computerChoice == "rock"){
+        console.log("you won this round")
+        return "you won this round"
+    }
+    if (playerChoice == "scissors" && computerChoice == "rock"){
+        console.log("you lost this round")
+        return "you lost this round"
+    }
+    if (playerChoice == "scissors" && computerChoice == "paper"){
+        console.log("you won this round")
+        return "you won this round" 
+    }
 }
 
 function game() {
@@ -45,8 +55,7 @@ function game() {
             computerChoice = getComputerChoice();
         } while(playerChoice === computerChoice)
 
-        console.log(computerChoice)
-        if(playRound(playerChoice, computerChoice) == "you win") {
+        if(playRound(playerChoice, computerChoice) == "you won this round") {
             winCounter++;
         }
     }
@@ -58,7 +67,7 @@ let winCounter = game()
 console.log(winCounter)
 
 if( winCounter > 2 ) {
-    console.log("Congratulations, you won")
+    console.log("Congratulations, you won the game")
 }
 
 
