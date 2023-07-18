@@ -1,6 +1,6 @@
 let randomNumber;
 let computerChoice;
-let playerChoice = "rock";
+let playerChoice = "hi";
 playerChoice = (playerChoice.toLowerCase());
 
 function getComputerChoice(){
@@ -50,11 +50,18 @@ function playRound(playerChoice, computerChoice) {
 function game() {
     let winCounter = 0;
     for (let i = 0; i <= 4; i++) {
-        
-        do {
-            computerChoice = getComputerChoice();
-        } while(playerChoice === computerChoice)
+        computerChoice = getComputerChoice()
+        playerChoice = prompt("Choose between rock, paper and scissors");
+        playerChoice = playerChoice.toLowerCase();
+        while (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
+            playerChoice = prompt("invalid entry\ntry again");
+            playerChoice = playerChoice.toLowerCase();
+        }
 
+        while(playerChoice === computerChoice){
+            playerChoice = prompt("That was a tie, try again")
+            playerChoice = playerChoice.toLowerCase();
+        }
         if(playRound(playerChoice, computerChoice) == "you won this round") {
             winCounter++;
         }
@@ -68,6 +75,9 @@ console.log(winCounter)
 
 if( winCounter > 2 ) {
     console.log("Congratulations, you won the game")
+}
+else {
+    console.log("you lost the game")
 }
 
 
