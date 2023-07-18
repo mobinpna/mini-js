@@ -43,12 +43,30 @@ function playRound(playerChoice, computerChoice) {
     
 }
 
+function game() {
+    let winCounter = 0;
+    for (let i = 0; i <= 4; i++) {
+        computerChoice = getComputerChoice();
+        console.log(computerChoice)
+        if(playRound(playerChoice, computerChoice) == "you win") {
+            winCounter++;
+        }
+    }
+    return winCounter;
+}
 
+// computerChoice = getComputerChoice();
+// playRound(playerChoice, computerChoice);
 
-computerChoice = getComputerChoice();
-playRound(playerChoice, computerChoice);
+// console.log(computerChoice);
+// console.log(playRound(playerChoice, computerChoice));
 
-console.log(computerChoice);
-console.log(playRound(playerChoice, computerChoice));
+let winCounter = game()
+
+console.log(winCounter)
+
+if( winCounter > 2 ) {
+    console.log("Congratulations, you won")
+}
 
 
