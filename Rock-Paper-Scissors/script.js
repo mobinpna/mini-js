@@ -1,6 +1,6 @@
 let randomNumber;
 let computerChoice;
-let playerChoice = "paper";
+let playerChoice = "rock";
 playerChoice = (playerChoice.toLowerCase());
 
 function getComputerChoice(){
@@ -20,10 +20,15 @@ function getComputerChoice(){
     return text;
 }
 
-
+function playRound(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice){
+        console.log("tie")
+    }
+}
 
 computerChoice = getComputerChoice();
-console.log(randomNumber)
+playRound(playerChoice, computerChoice);
+
 console.log(computerChoice)
-console.log(playerChoice)
+
 
