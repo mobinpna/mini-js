@@ -54,36 +54,38 @@ function game() {
 //     console.log("you lost the game")
 // }
 
+function writeOnPage (string){
+    const container = document.querySelector('.container');
+    const content = document.createElement('div');
+    content.classList.add('round');
+    content.textContent = string;
+    container.appendChild(content);
+}
+
 const buttons = Array.from(document.querySelectorAll('.button'));
 buttons.forEach((button) => button.addEventListener('click', () => {
     playerChoice = button.id;
     computerChoice = getComputerChoice();
     if (playerChoice === computerChoice){
-        console.log("Tie, please try again")
+        writeOnPage("Tie, please try again")
         return
     }
     if (playerChoice == "rock" && computerChoice == "paper"){
-        console.log("you lost this round")
-        return "you lost this round"
+        writeOnPage("you lost this round");
     }
     if (playerChoice == "rock" && computerChoice == "scissors"){
-        console.log("you won this round")
-        return "you won this round"
+        writeOnPage("you won this round");
     }
     if (playerChoice == "paper" && computerChoice == "scissors"){
-        console.log("you lost this round")
-        return "you lost this round"
+        writeOnPage("you lost this round");
     }
     if (playerChoice == "paper" && computerChoice == "rock"){
-        console.log("you won this round")
-        return "you won this round"
+        writeOnPage("you won this round");
     }
     if (playerChoice == "scissors" && computerChoice == "rock"){
-        console.log("you lost this round")
-        return "you lost this round"
+        writeOnPage("you lost this round");
     }
     if (playerChoice == "scissors" && computerChoice == "paper"){
-        console.log("you won this round")
-        return "you won this round" 
+        writeOnPage("you won this round"); 
     }
 }));
