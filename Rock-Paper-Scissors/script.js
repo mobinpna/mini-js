@@ -50,7 +50,7 @@ function playRound(playerChoice, computerChoice) {
 function game() {
     let winCounter = 0;
     for (let i = 0; i <= 4; i++) {
-        computerChoice = getComputerChoice()
+        computerChoice = getComputerChoice();
         // playerChoice = prompt("Choose between rock, paper and scissors");
         playerChoice = playerChoice.toLowerCase();
         while (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
@@ -69,15 +69,17 @@ function game() {
     return winCounter;
 }
 
-let winCounter = game()
+// let winCounter = game()
 
-console.log(winCounter)
+// console.log(winCounter)
 
-if( winCounter > 2 ) {
-    console.log("Congratulations, you won the game")
-}
-else {
-    console.log("you lost the game")
-}
+// if( winCounter > 2 ) {
+//     console.log("Congratulations, you won the game")
+// }
+// else {
+//     console.log("you lost the game")
+// }
 
+const buttons = Array.from(document.querySelectorAll('.button'));
 
+console.log(buttons);
