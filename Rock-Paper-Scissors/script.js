@@ -20,33 +20,6 @@ function getComputerChoice(){
     return text;
 }
 
-function playRound(playerChoice, computerChoice) {
-    console.log('hi')
-    if (playerChoice == "rock" && computerChoice == "paper"){
-        console.log("you lost this round")
-        return "you lost this round"
-    }
-    if (playerChoice == "rock" && computerChoice == "scissors"){
-        console.log("you won this round")
-        return "you won this round"
-    }
-    if (playerChoice == "paper" && computerChoice == "scissors"){
-        console.log("you lost this round")
-        return "you lost this round"
-    }
-    if (playerChoice == "paper" && computerChoice == "rock"){
-        console.log("you won this round")
-        return "you won this round"
-    }
-    if (playerChoice == "scissors" && computerChoice == "rock"){
-        console.log("you lost this round")
-        return "you lost this round"
-    }
-    if (playerChoice == "scissors" && computerChoice == "paper"){
-        console.log("you won this round")
-        return "you won this round" 
-    }
-}
 
 function game() {
     let winCounter = 0;
@@ -82,5 +55,35 @@ function game() {
 // }
 
 const buttons = Array.from(document.querySelectorAll('.button'));
-buttons.forEach(button => button.addEventListener('click', playRound));
-// console.log(buttons);
+buttons.forEach((button) => button.addEventListener('click', () => {
+    playerChoice = button.id;
+    computerChoice = getComputerChoice();
+    if (playerChoice === computerChoice){
+        console.log("Tie, please try again")
+        return
+    }
+    if (playerChoice == "rock" && computerChoice == "paper"){
+        console.log("you lost this round")
+        return "you lost this round"
+    }
+    if (playerChoice == "rock" && computerChoice == "scissors"){
+        console.log("you won this round")
+        return "you won this round"
+    }
+    if (playerChoice == "paper" && computerChoice == "scissors"){
+        console.log("you lost this round")
+        return "you lost this round"
+    }
+    if (playerChoice == "paper" && computerChoice == "rock"){
+        console.log("you won this round")
+        return "you won this round"
+    }
+    if (playerChoice == "scissors" && computerChoice == "rock"){
+        console.log("you lost this round")
+        return "you lost this round"
+    }
+    if (playerChoice == "scissors" && computerChoice == "paper"){
+        console.log("you won this round")
+        return "you won this round" 
+    }
+}));
