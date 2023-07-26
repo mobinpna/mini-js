@@ -21,6 +21,7 @@ function getComputerChoice(){
 }
 
 function playRound(playerChoice, computerChoice) {
+    console.log('hi')
     if (playerChoice == "rock" && computerChoice == "paper"){
         console.log("you lost this round")
         return "you lost this round"
@@ -81,5 +82,5 @@ function game() {
 // }
 
 const buttons = Array.from(document.querySelectorAll('.button'));
-
-console.log(buttons);
+buttons.forEach(button => button.addEventListener('click', playRound));
+// console.log(buttons);
