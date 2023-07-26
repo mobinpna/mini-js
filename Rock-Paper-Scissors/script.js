@@ -1,7 +1,10 @@
 let randomNumber;
 let computerChoice;
-let playerChoice = "hi";
-playerChoice = (playerChoice.toLowerCase());
+let playerChoice;
+let winCounter = 0;
+let roundCounter = 0;
+let playerScore = 0;
+let compScore = 0;
 
 function getComputerChoice(){
     randomNumber = Math.floor(Math.random() * 3) + 1 ;
@@ -20,40 +23,6 @@ function getComputerChoice(){
     return text;
 }
 
-
-function game() {
-    let winCounter = 0;
-    for (let i = 0; i <= 4; i++) {
-        computerChoice = getComputerChoice();
-        // playerChoice = prompt("Choose between rock, paper and scissors");
-        playerChoice = playerChoice.toLowerCase();
-        while (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
-            // playerChoice = prompt("invalid entry\ntry again");
-            playerChoice = playerChoice.toLowerCase();
-        }
-
-        while(playerChoice === computerChoice){
-            // playerChoice = prompt("That was a tie, try again")
-            playerChoice = playerChoice.toLowerCase();
-        }
-        if(playRound(playerChoice, computerChoice) == "you won this round") {
-            winCounter++;
-        }
-    }
-    return winCounter;
-}
-
-// let winCounter = game()
-
-// console.log(winCounter)
-
-// if( winCounter > 2 ) {
-//     console.log("Congratulations, you won the game")
-// }
-// else {
-//     console.log("you lost the game")
-// }
-
 function writeOnPage (string){
     const container = document.querySelector('.container');
     const content = document.createElement('div');
@@ -62,30 +31,65 @@ function writeOnPage (string){
     container.appendChild(content);
 }
 
+function cleanPage(className) {
+    const contents = document.querySelectorAll(className)
+    contents.forEach(content => content.remove())
+}
+
+function announceResult() {
+    let announcement;
+    if(playerScore > compScore)announcement = "congratulations, you have won";
+    else announcement = "you lost the game";
+    const container = document.querySelector('.container');
+    const content = document.createElement('div');
+    content.classList.add('announce');
+    content.textContent = announcement;
+    container.appendChild(content);
+}
+
+function playRound () {
+    if (playerChoice === computerChoice){
+        writeOnPage("Tie, please try again");
+        roundCounter--;
+    }
+    if (playerChoice == "rock" && computerChoice == "paper"){
+        writeOnPage("you lost this round");
+        compScore++;
+    }
+    if (playerChoice == "rock" && computerChoice == "scissors"){
+        writeOnPage("you won this round");
+        playerScore++;
+    }
+    if (playerChoice == "paper" && computerChoice == "scissors"){
+        writeOnPage("you lost this round");
+        compScore++;
+    }
+    if (playerChoice == "paper" && computerChoice == "rock"){
+        writeOnPage("you won this round");
+        playerScore++;
+    }
+    if (playerChoice == "scissors" && computerChoice == "rock"){
+        writeOnPage("you lost this round");
+        compScore++;
+    }
+    if (playerChoice == "scissors" && computerChoice == "paper"){
+        writeOnPage("you won this round");
+        playerScore++;
+    }
+    roundCounter++;
+    if (roundCounter >= 5){
+        console.log(playerScore, compScore, roundCounter)
+        announceResult();
+        roundCounter = 0;
+        playerScore = 0;
+        compScore = 0;
+        cleanPage('.round');
+    }
+}
+
 const buttons = Array.from(document.querySelectorAll('.button'));
 buttons.forEach((button) => button.addEventListener('click', () => {
     playerChoice = button.id;
     computerChoice = getComputerChoice();
-    if (playerChoice === computerChoice){
-        writeOnPage("Tie, please try again")
-        return
-    }
-    if (playerChoice == "rock" && computerChoice == "paper"){
-        writeOnPage("you lost this round");
-    }
-    if (playerChoice == "rock" && computerChoice == "scissors"){
-        writeOnPage("you won this round");
-    }
-    if (playerChoice == "paper" && computerChoice == "scissors"){
-        writeOnPage("you lost this round");
-    }
-    if (playerChoice == "paper" && computerChoice == "rock"){
-        writeOnPage("you won this round");
-    }
-    if (playerChoice == "scissors" && computerChoice == "rock"){
-        writeOnPage("you lost this round");
-    }
-    if (playerChoice == "scissors" && computerChoice == "paper"){
-        writeOnPage("you won this round"); 
-    }
+    playRound();
 }));
