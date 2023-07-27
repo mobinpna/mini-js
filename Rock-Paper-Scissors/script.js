@@ -39,7 +39,7 @@ function cleanPage(className) {
 function announceResult() {
     let announcement;
     if(playerScore > compScore)announcement = "congratulations, you have won";
-    else announcement = "you lost the game";
+        else announcement = "you lost the game";
     const container = document.querySelector('.container');
     const content = document.createElement('div');
     content.classList.add('announce');
@@ -48,6 +48,13 @@ function announceResult() {
 }
 
 function playRound () {
+    if (roundCounter >= 5){
+        roundCounter = 0;
+        playerScore = 0;
+        compScore = 0;
+        cleanPage('.round');
+        cleanPage('.announce');
+    }
     if (playerChoice === computerChoice){
         writeOnPage("Tie, please try again");
         roundCounter--;
@@ -77,14 +84,16 @@ function playRound () {
         playerScore++;
     }
     roundCounter++;
-    if (roundCounter >= 5){
-        console.log(playerScore, compScore, roundCounter)
-        announceResult();
-        roundCounter = 0;
-        playerScore = 0;
-        compScore = 0;
-        cleanPage('.round');
-    }
+    if(roundCounter>=5) announceResult();
+}
+
+function showScore() {
+    const container = document.querySelector('.scoreContainer');
+    const showPlayer = document.querySelector('.playerScore');
+    const showComp = document.querySelector('.compScore');
+    showPlayer.textContent = `player score: ${playerScore}`;
+    showComp.textContent = `computer score: ${compScore}`;
+    container.appendChild(showPlayer, showComp);
 }
 
 const buttons = Array.from(document.querySelectorAll('.button'));
@@ -93,3 +102,5 @@ buttons.forEach((button) => button.addEventListener('click', () => {
     computerChoice = getComputerChoice();
     playRound();
 }));
+
+buttons.forEach(button => button.addEventListener('click', showScore));
