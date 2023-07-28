@@ -2,4 +2,12 @@
     background-color: beige;
     width: 800px;
     height: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rowContainer {
+    height: 20px;
+    width: 20px;
+    background-color: #000;
 }
