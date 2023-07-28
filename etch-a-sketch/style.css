@@ -1,13 +1,16 @@
 .canvasContainer {
-    background-color: beige;
     width: 800px;
     height: 800px;
     display: flex;
     flex-direction: column;
 }
 
-.rowContainer {
-    height: 20px;
-    width: 20px;
+.rowContainer{
+    display: flex;
+    flex: auto;
+}
+
+.canvasTile {
     background-color: #000;
+    flex: 1 1 auto;
 }
