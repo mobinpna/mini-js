@@ -1,5 +1,5 @@
 let squareNum;
-squareNum = prompt( 'how many squares in a row?');
+squareNum = 16;
 const container = document.querySelector('.canvasContainer');
 
 for (let i = squareNum; i > 0 ;i--){
@@ -9,7 +9,6 @@ for (let i = squareNum; i > 0 ;i--){
     container.appendChild(row);
 }  
 
-
 for (let i = squareNum; i > 0 ;i--){
     let rowContainer = document.querySelector(`.row${i}`);
   for(let j=squareNum; j > 0; j--){
@@ -17,4 +16,13 @@ for (let i = squareNum; i > 0 ;i--){
     column.classList.add('canvasTile');
     rowContainer.appendChild(column);
   }
+}
+
+function changeColor(e) {
+    console.log(e);
+}
+
+const canvasTiles = document.querySelectorAll('.canvasTile');
+for (let i = canvasTiles.length-1; i>=0; i--) {
+    canvasTiles[i].addEventListener('mouseover', (e) => changeColor(e));
 }
