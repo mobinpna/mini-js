@@ -14,6 +14,7 @@ for (let i = squareNum; i > 0 ;i--){
   for(let j=squareNum; j > 0; j--){
     let column =document.createElement('div');
     column.classList.add('canvasTile');
+    column.setAttribute("id", `column${j}row${i}`)
     rowContainer.appendChild(column);
   }
 }
