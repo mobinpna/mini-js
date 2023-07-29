@@ -41,7 +41,7 @@ function changeColor(id) {
 
 function clearCanvas() {
     const tiles = document.querySelectorAll('.canvasTile');
-    tiles.forEach(tile => tile.style.backgroundColor = 'black');
+    tiles.forEach(tile => tile.style.backgroundColor = '#eaeaee');
 }
 
 createCanvas();
