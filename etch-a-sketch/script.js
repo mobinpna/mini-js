@@ -49,7 +49,7 @@ createCanvas();
 const newCanvas= document.querySelector('.new');
 newCanvas.addEventListener('click', () => {
     squareNum = prompt('How many squares per side?');
-    createCanvas();
+    if(squareNum !== null) createCanvas();
 });
 
 const clear = document.querySelector('.clear');
