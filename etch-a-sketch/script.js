@@ -49,6 +49,7 @@ createCanvas();
 const newCanvas= document.querySelector('.new');
 newCanvas.addEventListener('click', () => {
     squareNum = prompt('How many squares per side?');
+    while (squareNum >= 100) squareNum = prompt('Please choose between 1 and 99');
     if(squareNum !== null) createCanvas();
 });
 
