@@ -19,11 +19,17 @@ for (let i = squareNum; i > 0 ;i--){
   }
 }
 
-function changeColor(e) {
-    console.log(e);
+function ColorCodeGenrator(){
+    let colorCode = Math.floor(Math.random() * 256);
+    return colorCode;
+}
+
+function changeColor(id) {
+    let tile = document.querySelector(`#${id}`);
+    tile.setAttribute('style', `background-color: rgb(${ColorCodeGenrator()},${ColorCodeGenrator()},${ColorCodeGenrator()});`)
 }
 
 const canvasTiles = document.querySelectorAll('.canvasTile');
 for (let i = canvasTiles.length-1; i>=0; i--) {
-    canvasTiles[i].addEventListener('mouseover', (e) => changeColor(e));
+    canvasTiles[i].addEventListener('mouseover', (e) => changeColor(e.target.id));
 }
