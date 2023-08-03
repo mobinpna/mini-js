@@ -1,9 +1,11 @@
+let num1, num2, op;
+
 function add(...nums){
     let sum = nums.reduce((sum, num) => sum + num, 0);
     return sum;
 }
 
-function subtract(a, b){
+function subtract(a,b){
     return a-b;
 }
 
@@ -29,4 +31,3 @@ function operate(num1, op, num2){
             break;
     }
 }
-console.log(operate(5,"+",4))
