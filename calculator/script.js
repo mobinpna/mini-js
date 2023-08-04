@@ -1,4 +1,6 @@
 let num1, num2, op;
+const display = document.querySelector('.display');
+display.textContent = 'HELLO';
 
 function add(...nums){
     let sum = nums.reduce((sum, num) => sum + num, 0);
@@ -31,3 +33,10 @@ function operate(num1, op, num2){
             break;
     }
 }
+
+function hi (button){
+    display.textContent = button.target.innerText;
+}
+
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(button => button.addEventListener('click', (button) => hi(button)));
