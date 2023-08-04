@@ -1,0 +1,39 @@
+body {
+    background-color: #3A506B;
+    color: #E1F4F3;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+.calculator {
+    display: flex;
+    flex-direction: column;
+    background-color: #1c2541;
+}
+
+.display {
+    background-color: #080E20;
+    padding: 50px;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    padding:20px 40px;
+}
+
+.button div{
+    flex-grow: 1;
+}
