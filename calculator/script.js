@@ -34,9 +34,35 @@ function operate(num1, op, num2){
     }
 }
 
-function hi (button){
-    display.textContent = button.target.innerText;
+let content ='';
+function showOnDisplay (button){
+    switch (button.target.classList[1]) {
+        case 'num':
+            content = content + button.target.innerText;
+            break;
+        case 'dot':
+            if(content.length === 0)
+                content = '0';
+            if(!content.includes('.'))
+                content = content + button.target.innerText;
+            break;
+        case 'clear':
+            content = '';
+            break;
+        case 'del':
+            content = content.slice(0, -1)
+            break;
+        default:
+            break;
+    }
+    if(button.target.id == 'b%'){
+        content = (+content / 100);
+        content = content + '';
+    }
+    display.textContent = content;
 }
 
 const buttons = document.querySelectorAll('.button');
-buttons.forEach(button => button.addEventListener('click', (button) => hi(button)));
+buttons.forEach(button => button.addEventListener('click', (button) => {
+    showOnDisplay(button);
+}));
