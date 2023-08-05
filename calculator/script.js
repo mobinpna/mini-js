@@ -42,8 +42,10 @@ function calculator (button){
             if (lastButton == 'op'|| lastButton == 'equal'){
                 num2 = undefined;
                 num1 = (+content);
-                content = '';
+                content = '0';
             }
+            if(button.target.innerText == '0' && content == '0')break;
+            if(content == '0') content = '';
             content = content + button.target.innerText;
             break;
         case 'dot':
@@ -53,7 +55,7 @@ function calculator (button){
                 content = content + button.target.innerText;
             break;
         case 'clear':
-            content ='';
+            content ='0';
             num1 = undefined;
             num2 = undefined;
             op = undefined;
