@@ -35,7 +35,8 @@ function operate(number1, operator, number2){
     }
 }
 
-let content ='';
+let content ='0';
+let subContent = '';
 function calculator (button){
     switch (button.target.classList[1]) {
         case 'num':
@@ -59,6 +60,7 @@ function calculator (button){
             num1 = undefined;
             num2 = undefined;
             op = undefined;
+            subContent = '';
             break;
         case 'percent':
             content = (+content / 100);
@@ -79,6 +81,19 @@ function calculator (button){
                     num1 = (+content);
                 }
             }
+            if (num1){
+                switch (op) {
+                    case '/':
+                        subContent = '\u00f7';
+                        break;
+                    case '*':
+                        subContent = '\u00D7';
+                        break;
+                }
+                if (op !='*' && op !='/'){
+                    subContent = op;
+                }
+            }
             break;
         case 'equal':
             if (!num1 || lastButton =='op' || lastButton== 'equal')break;
@@ -86,10 +101,12 @@ function calculator (button){
             content = operate(num1, op, num2);
             num1 = content;
             num2 = undefined;
+            subContent = '='
         default:
             break;
     }
     display.textContent = content;
+    sub.textContent = subContent;
 }
 
 let lastButton;
@@ -103,5 +120,4 @@ const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click', (button) => {
     lastButtonRecord(button);
     calculator(button);
-    console.log(button)
 }));
