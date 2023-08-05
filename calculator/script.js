@@ -1,5 +1,6 @@
 let num1, num2, op;
-const display = document.querySelector('.display');
+const display = document.querySelector('.main');
+const sub = document.querySelector('.sub');
 display.textContent = 'HELLO';
 
 function add(...nums){
@@ -19,25 +20,30 @@ function divide(a,b){
     return a/b;
 }
 
-function operate(num1, op, num2){
-    switch (op) {
+function operate(number1, operator, number2){
+    switch (operator) {
         case "+":
-            return add(num1,num2);
+            return add(number1,number2);
         case "-":
-            return subtract(num1,num2);
+            return subtract(number1,number2);
         case "*":
-            return multiply(num1,num2);
+            return multiply(number1,number2);
         case "/":
-            return divide(num1,num2);
+            return divide(number1,number2);
         default:
             break;
     }
 }
 
 let content ='';
-function showOnDisplay (button){
+function calculator (button){
     switch (button.target.classList[1]) {
         case 'num':
+            if (lastButton == 'op'|| lastButton == 'equal'){
+                num2 = undefined;
+                num1 = (+content);
+                content = '';
+            }
             content = content + button.target.innerText;
             break;
         case 'dot':
@@ -47,22 +53,53 @@ function showOnDisplay (button){
                 content = content + button.target.innerText;
             break;
         case 'clear':
-            content = '';
+            content ='';
+            num1 = undefined;
+            num2 = undefined;
+            op = undefined;
             break;
-        case 'del':
-            content = content.slice(0, -1)
+        case 'percent':
+            content = (+content / 100);
+            content = content + '';
             break;
+        case 'negative':
+            content = '' + (-(+content));
+            break;
+        case 'op':
+            if(lastButton=='op')op = button.target.classList[2];
+            else{ if(num1 && lastButton != 'equal'){
+                    num2= +content;
+                    content = operate(num1,op,num2);
+                    num1 = content;
+                    num2 = undefined;
+                } else {
+                    op = button.target.classList[2];
+                    num1 = (+content);
+                }
+            }
+            break;
+        case 'equal':
+            if (!num1 || lastButton =='op' || lastButton== 'equal')break;
+            num2 = (+content);
+            content = operate(num1, op, num2);
+            num1 = content;
+            num2 = undefined;
         default:
             break;
-    }
-    if(button.target.id == 'b%'){
-        content = (+content / 100);
-        content = content + '';
     }
     display.textContent = content;
 }
 
+let lastButton;
+let currentButton;
+function lastButtonRecord(button){
+    lastButton = currentButton;
+    currentButton = button.target.classList[1];
+}
+
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click', (button) => {
-    showOnDisplay(button);
+    lastButtonRecord(button);
+    calculator(button);
+    console.log(button)
 }));
