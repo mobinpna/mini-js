@@ -76,6 +76,7 @@ function calculator (button){
                     content = operate(num1,op,num2);
                     num1 = content;
                     num2 = undefined;
+                    op = button.target.classList[2];
                 } else {
                     op = button.target.classList[2];
                     num1 = (+content);
