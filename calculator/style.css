@@ -68,6 +68,23 @@ body {
 }
 .equal {
     flex-grow: 1;
+    background-color: blue;
+}
+
+.row4 .op,
+.row3 .op,
+.row2 .op,
+.row1 .op {
+    color: #080E20;
+    background-color: yellow;
+}
+
+.row1 .clear {
+    background-color: red;
+}
+
+.row1 div {
+    background-color: rgb(127, 136, 255);
 }
 
 .footer {
