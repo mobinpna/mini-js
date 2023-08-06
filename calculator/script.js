@@ -39,10 +39,15 @@ let content ='0';
 let subContent = '';
 function calculator (button){
     switch (button.target.classList[1]) {
-        case 'num':
+        case 'num':   
             if (lastButton == 'op'|| lastButton == 'equal'){
                 num2 = undefined;
-                num1 = (+content);
+                if(content == 'ERROR can\'t divide by zero'){
+                    num1 = 0;
+                }
+                else {
+                    num1 = (+content);
+                }
                 content = '0';
             }
             if(button.target.innerText == '0' && content == '0')break;
@@ -74,7 +79,7 @@ function calculator (button){
             else{ if(num1 && lastButton != 'equal'){
                     num2= +content;
                     content = operate(num1,op,num2);
-                    num1 = content;
+                    num1 = (+content);
                     num2 = undefined;
                     op = button.target.classList[2];
                 } else {
@@ -97,14 +102,19 @@ function calculator (button){
             }
             break;
         case 'equal':
-            if (!num1 || lastButton =='op' || lastButton== 'equal')break;
+            if (!num1 || lastButton =='op' || lastButton== 'equal'){
+                break;
+            }
             num2 = (+content);
             content = operate(num1, op, num2);
-            num1 = content;
+            num1 = (+content);
             num2 = undefined;
             subContent = '='
         default:
             break;
+    }
+    if (content == 'Infinity' || content == '-Infinity'){
+        content = 'ERROR can\'t divide by zero';
     }
     display.textContent = content;
     sub.textContent = subContent;
