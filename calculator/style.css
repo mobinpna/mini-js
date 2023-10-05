@@ -96,3 +96,12 @@ body {
     font-weight: 900;
     font-size: larger;
 }
+
+.button:hover {
+    scale: 1.1;
+    transition: 0.1s;
+}
+
+.button:active {
+    scale: 0.9;
+}
