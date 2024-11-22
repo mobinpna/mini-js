@@ -9,14 +9,82 @@
 </head>
 <body>
     <div class="left-card">
-        <img src="background.png" alt="">
-        <div class="logo-holder"></div>
-        <div class="footer"></div>
+        <img class="background" src="background.png" alt="">
+        <div class="logo-holder">
+            <img class="logo" src="odin-lined.png" alt="">
+            <p class="logo-title">ODIN</p>
+        </div>
+        <div  class="footer">
+            <p>Photo by someone from somewhere</p>
+        </div>
     </div>
-    <div class="right-card">
-        <div class="paragraph"></div>
-        <div class="signup-card"></div>
-        <div class="botom"></div>
+    <div>
+        <form class="right-card" action="#" method="post">
+            <div class="paragraph">
+                <p>This is not a real online service! You know you need something like this in your life
+                    to help you realize your deepest dreams.<br>Sign up now to get started.<br><br> You know you want to.</p>
+            </div>
+            <div class="signup-card">
+                <legend>Let's do this!</legend>
+                <br>
+                
+                <div class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">FIRST NAME</label>
+                            <input id="hi" class="input" type="text" name="first-name" id="first-name" placeholder="" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="last-name">LAST NAME</label>
+                            <input class="input" type="text" name="last-name" id="last-name" placeholder="" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">EMAIL</label>
+                            <input class="input" type="email" name="email" id="email" placeholder="" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="phone-number">PHONE NUMBER</label>
+                            <input class="input" type="number" name="phone-number" id="phone-number" placeholder="" required>
+        
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">PASSWORD</label>
+                            <input class="input"
+                                type="password"
+                                name="password"
+                                id="password"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$"
+                                placeholder="" 
+                                required>
+        
+                            </div>
+                            
+                        <div class="form-group">
+                            <label for="confirm-password">CONFIRM PASSWORD</label>
+                            <input class="input"
+                                type="password"
+                                name="confirm-password"
+                                id="confirm-password"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$"
+                                placeholder="" 
+                                required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                        <button class="button" type="submit">Create Account</button>
+                        <p>Already have an account? <a href="#">Log in</a> </p>
+            </div>
+        </form>
     </div>
 </body>
 </html>
