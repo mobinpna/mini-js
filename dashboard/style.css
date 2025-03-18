@@ -26,10 +26,6 @@
     grid-template-rows: 120px 3fr;
 }
 
-img {
-    /* height: 35px; */
-}
-
 .header {
     height: 100px;
     display: grid;
