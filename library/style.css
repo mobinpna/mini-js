@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+
+:root {
+    --main-color: #F5C45E;
+    --background-color :#102E50;
+    --white : #ffffff;
+    --black : #000000;
+    --some: #E78B48;
+    --asome: #BE3D2A;
+    --not-read: #5e1c12;
+    --read: #237c1b;
+}
+
+* {
+    font-family: 'roboto', sans-serif;
+    transition: all 0.2s ease;
+}
+html {
+    background-color: var(--background-color);
+}
+#container {
+    margin-bottom: 20px;
+    height: auto;
+    display: grid;
+    grid-auto-flow: column;
+    grid: auto 1fr / repeat(auto-fill, minmax(300px, 1fr));
+    gap : 20px;
+}
+
+.header {
+    grid-area: 1/1/2/-1 ;
+    color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+.card {
+    height: 350px;
+    margin: 10px;
+    color: var(--background-color);
+    background-color: var(--some);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:  center;
+    border-radius: 10px;
+}
+
+.card > * {
+    text-align: center;
+}
+
+.cover, .info {
+    width: 100%;
+}
+.cover {
+    height: 100%;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.author {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.info {
+    padding: 8px 0px;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--asome);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.pages {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.read, .remove-btn {
+    cursor:pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.read {
+    font-size: 18px;
+    font-weight: 500;
+    width: 25px;
+    height: 25px;
+}
+
+.read:hover, .remove-btn:hover {
+    background-color: var(--some);
+}
+
+.remove-btn {
+    border: none;
+    background-color: var(--asome);
+    color: var(--background-color);
+}
+
+.remove-btn:hover {
+    background-color: var(--main-color);
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--asome);
+    color: white;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+  
+.floating-btn:hover {
+    background-color: #3367d6;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+#form-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    visibility: hidden;
+}
+
+
+#form-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    color: var(--background-color);
+    background-color: var(--some);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-header {
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.close {
+    cursor: pointer;
+    align-self: flex-end;
+    border: none;
+    background-color: var(--some);
+    color: var(--asome);
+    font-size: 30px;
+    font-weight: 900;
+    border-radius: 8px;
+}
+
+.close:hover {
+    background-color: var(--main-color);
+}
+
+.form-pair {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding:6px 0px;
+}
+
+input {
+    padding: 0px 10px;
+    border: none;
+    background-color: var(--background-color);
+    color: var(--main-color);
+    font-size: 16px;
+    font-weight: 700;
+    height: 28px;
+    border-radius: 6px;
+}
+
+.checkbox {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-color: var(--not-read);
+    justify-self: center;
+    align-self: center;
+}
+
+.checkbox:checked {
+    background-color: var(--read);
+    position: relative;
+  }
+
+#form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit {
+    background-color: var(--asome);
+    border: none;
+    padding:8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-end;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            Bob's Library
+        </div>
+        <!-- <div class="card">
+            <div class="cover">
+                <p class="title">hobbit</p>
+                <p class="author">author</p>
+            </div>
+            <div class="info">
+                pages read
+            </div> -->
+            <button class="floating-btn" id="fab">
+                <span class="fab-icon">+</span>
+            </button>
+        </div>
+        <div class="form-popup" id="form-popup">
+            <div class="form-container">
+                <button class="close">
+                    X
+                </button>
+                <h2 class="form-header">Add your book</h2>
+                <form id="form" action="submit">
+                    <div class="form-pair">
+                        <label for="name">name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="author">author</label>
+                        <input type="text" name="author" id="author" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="pages">pages</label>
+                        <input type="number" name="pages" id="pages" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="read">read </label>
+                        <input class="checkbox" type="checkbox" name="read" id="read">
+                    </div>
+                    <button class="submit" type="submit" id="submit">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
