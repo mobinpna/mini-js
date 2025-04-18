@@ -142,8 +142,6 @@ function getCards (){
 
 addBookToLibrary(["1984", "George orwell", 156, false]);
 addBookToLibrary(["The Hobbit", "J.R.R. tolkein", 385, true]);
-addBookToLibrary(["1984", "George orwell", 156, false]);
-addBookToLibrary(["The Hobbit", "J.R.R. tolkein", 385, true]);
 
 
 displayCards();
