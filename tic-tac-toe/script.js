@@ -1,4 +1,18 @@
-function GameBoard() {
+function Cell() {
+    let value = '';
+    
+
+  const assignValue = (token) => {
+    value = token;
+  }
+
+  const getValue = () => value;
+
+  return {assignValue, getValue};
+
+}
+
+const  board = (function () {
     const rows = 3;
     const columns = 3 ;
     const board = [];
@@ -29,24 +43,9 @@ function GameBoard() {
     const getBoard = () => board;
 
     return {getBoard, printBoard, assignToken};
-};
+}) ();
 
-function Cell() {
-    let value = '';
-    
-
-  const assignValue = (token) => {
-    value = token;
-  }
-
-  const getValue = () => value;
-
-  return {assignValue, getValue};
-
-}
-
-
-function GameController(
+const game = (function (
     playerOne = "player one",
     playerTwo = "player two"
 ) { 
@@ -69,8 +68,6 @@ function GameController(
     }
 
     const getActivePlayer = () => activePlayer;
-
-    const board = GameBoard();
 
     const printNewRound = () => {
         console.log(`${getActivePlayer().name}'s turn`);
@@ -143,7 +140,4 @@ function GameController(
     printNewRound();
 
     return {getActivePlayer, switchPlayerTurn, printNewRound, playNewRound}
-}
-
-const game = GameController();
-
+}) ();
